@@ -1,0 +1,27 @@
+//DFS method is valid, but it's time-consumming.
+//O(m+n) solution:
+
+//start from the top right corner, eliminate 1 row or 1 colomn each iteration.
+
+
+public class Solution {
+    public boolean searchMatrix(int[][] matrix, int target) {
+    	if(matrix == null || matrix.length == 0 || matrix[0].length == 0) {
+    		return false;
+    	}
+
+    	int row = 0, col = matrix[0].length-1;
+
+    	while(row < matrix.length && col >= 0) {
+    		if(matrix[row][col] == target) {
+    			return true;
+    		} else if(matrix[row][col] > target) {
+    			col--;
+    		} else {
+    			row++;
+    		}
+    	}
+    	return false;
+
+    }
+}
